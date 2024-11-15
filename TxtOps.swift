@@ -70,4 +70,39 @@ func buscarPalavra() {
     }
 }
 
+func renomearPalavra() {
+    print("Digite o caminho do arquivo de texto:")
+
+    guard let caminho = readLine() else {
+        print("Entrada inválida para o caminho do arquivo.")
+        return
+    }
+
+    print("Digite a palavra a ser substituída:")
+
+    guard let palavra = readLine() else {
+        print("Entrada inválida para a palavra a ser substituída.")
+        return
+    }
+
+    print("Digite a nova palavra:")
+
+    guard let novaPalavra = readLine() else {
+        print("Entrada inválida para a nova palavra.")
+        return
+    }
+
+    do {
+        let conteudo = try String(contentsOfFile: caminho)
+
+        let novoConteudo = conteudo.replacingOccurrences(of: palavra, with: novaPalavra)
+
+        try novoConteudo.write(toFile: caminho, atomically: true, encoding: .utf8)
+
+        print("Todas as ocorrências de '\(palavra)' foram substituídas por '\(novaPalavra)'.")
+    } catch {
+        print("Erro ao processar o arquivo. Verifique o caminho.")
+    }
+}
+
 main()
