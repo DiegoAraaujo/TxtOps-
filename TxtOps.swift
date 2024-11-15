@@ -61,10 +61,10 @@ func buscarPalavra() {
 
         let palavraBusca = palavra.lowercased()
 
-        let words = conteudo.split { $0.isWhitespace }
-        let occurrences = words.filter { $0 == palavraBusca }.count
+        let palavras = conteudo.split { $0.isWhitespace }
+        let nrepeticoes = palavras.filter { $0 == palavraBusca }.count
 
-        print("A palavra '\(palavra)' aparece \(occurrences) vezes no arquivo.")
+        print("A palavra '\(palavra)' aparece \(nrepeticoes) vezes no arquivo.")
     } catch {
         print("Erro ao ler o arquivo. Verifique o caminho.")
     }
