@@ -1,6 +1,6 @@
 import Foundation
 
-print("----------------------Bem-vindo ao TextCLI!-------------------------")
+print("----------------------Bem-vindo ao TxtOps!-------------------------")
 print("Serviços disponíveis:")
 print("| 1 = Contar palavras | 2 = Buscar palavra | 3 = Substituir palavra |")
 
@@ -21,6 +21,23 @@ func main() {
         replaceWord()
     default:
         print("ERRO: Você deve digitar uma das opções acima!")
+    }
+}
+
+func contarPalavras() { 
+    print("Digite o caminho do arquivo:")
+
+    guard let caminho = readLine(), !caminho.isEmpty else {
+        print("ERRO: O caminho do arquivo não foi fornecido ou é inválido.")
+        return
+    }
+
+    do {
+        let conteudo = try String(contentsOfFile: caminho)
+        let palavras = conteudo.split { $0.isWhitespace }
+        print("O arquivo contém \(palavras.count) palavras.")
+    } catch {
+        print("Erro ao ler o arquivo: \(error.localizedDescription). Verifique o caminho.")
     }
 }
 main()
