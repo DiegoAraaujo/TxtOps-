@@ -16,7 +16,7 @@ func main() {
     case "1":
         contarPalavras()
     case "2":
-        buscarpalavra()
+        buscarPalavra()
     case "3":
         renomearPalavra()
     default:
@@ -66,7 +66,7 @@ func buscarPalavra() {
 
         print("A palavra '\(palavra)' aparece \(nrepeticoes) vezes no arquivo.")
     } catch {
-        print("Erro ao ler o arquivo. Verifique o caminho.")
+        print("Erro ao ler o arquivo: \(error.localizedDescription). Verifique o caminho.")
     }
 }
 
@@ -101,7 +101,7 @@ func renomearPalavra() {
 
         print("Todas as ocorrências de '\(palavra)' foram substituídas por '\(novaPalavra)'.")
     } catch {
-        print("Erro ao processar o arquivo. Verifique o caminho.")
+        print("Erro ao ler o arquivo: \(error.localizedDescription). Verifique o caminho.")
     }
 }
 
