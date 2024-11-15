@@ -16,7 +16,7 @@ func main() {
     case "1":
         contarPalavras()
     case "2":
-        searchWord()
+        buscarpalavra()
     case "3":
         replaceWord()
     default:
@@ -40,4 +40,34 @@ func contarPalavras() {
         print("Erro ao ler o arquivo: \(error.localizedDescription). Verifique o caminho.")
     }
 }
+
+func buscarPalavra() {
+    print("Digite o caminho do arquivo de texto:")
+
+    guard let caminho = readLine() else {
+        print("Entrada inválida para o caminho do arquivo.")
+        return
+    }
+
+    print("Digite a palavra a ser buscada:")
+
+    guard let palavra = readLine() else {
+        print("Entrada inválida para a palavra.")
+        return
+    }
+
+    do {
+        let conteudo = try String(contentsOfFile: caminho).lowercased()
+
+        let palavraBusca = palavra.lowercased()
+
+        let words = conteudo.split { $0.isWhitespace }
+        let occurrences = words.filter { $0 == palavraBusca }.count
+
+        print("A palavra '\(palavra)' aparece \(occurrences) vezes no arquivo.")
+    } catch {
+        print("Erro ao ler o arquivo. Verifique o caminho.")
+    }
+}
+
 main()
