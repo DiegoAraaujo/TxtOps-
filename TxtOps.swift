@@ -18,7 +18,7 @@ func main() {
     case "2":
         buscarpalavra()
     case "3":
-        replaceWord()
+        renomearPalavra()
     default:
         print("ERRO: Você deve digitar uma das opções acima!")
     }
